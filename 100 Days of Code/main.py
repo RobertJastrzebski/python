@@ -1,3 +1,4 @@
+import random
 # imie=input("what is your name")
 # length = len(imie)
 # print(length)
@@ -128,7 +129,6 @@
 # e = lacznie_lower.count("e")
 # true=t+r+u+e
 # print(f'true wynosi {true}')
-# print(type(true))
 #
 #
 # l = lacznie_lower.count("l")
@@ -148,3 +148,126 @@
 #     print(f"Your score is {total_love_int}, you are alright together.")
 # else:
 #     print(f"Your score is {total_love_int}")
+# ----------------random function----------------------------------------------
+# random_int=random.random()*5
+#
+# print(random_int)
+#
+#
+# #Write your code below this line 👇
+# #Hint: Remember to import the random module first. 🎲
+# import random
+# random_number = random.randint(0,1)
+#
+#
+# if random_number == 1:
+#     print("orzeł")
+# else:
+#     print("reszka")
+# ------------------------ list append function dodaje na koncu listy.--------------------------------------------------
+
+# owoce = ["jakłko","pomarancza","banan"]
+# owoce.append("truskawka")
+# owoce.extend(["sliwka","jablko"])
+# print(owoce)
+
+# ----------------exercise who will pay---------------------------------------------------------------------------------
+# Split string method
+# names_string = input("Give me everybody's names, separated by a comma. ")
+# names = names_string.split(", ")
+# # 🚨 Don't change the code above 👆
+#
+# #Write your code below this line 👇
+#
+# length_names = len(names)-1
+# random_person = random.randint(0,length_names)
+# imie = names[random_person]
+# print(f'{imie} is going to buy the meal today!')
+# -------------------------------nested list----------------------------------------------------------------------------
+# warzywa= ['ziemniaki','marcheswki','buraki']
+# owoce= ['czeresnie','wisnie','jablka']
+# warzywa_owoce=[warzywa,owoce]
+# print(warzywa_owoce)
+
+# ------------------------------------------exercise treasure map-------------------------------------------------------
+# # 🚨 Don't change the code below 👇
+# row1 = ["⬜️","⬜️","⬜️"]
+# row2 = ["⬜️","⬜️","⬜️"]
+# row3 = ["⬜️","⬜️","⬜️"]
+# map = [row1, row2, row3]
+# print(f"{row1}\n{row2}\n{row3}")
+# position = input("Where do you want to put the treasure? ")
+# # 🚨 Don't change the code above 👆
+#
+# #Write your code below this row 👇
+#
+# position_column = int(position[0])
+# position_row = int(position[1])
+# map[position_row-1][position_column-1]=" X   "
+#
+#
+# #Write your code above this row 👆
+#
+# # 🚨 Don't change the code below 👇
+# print(f"{row1}\n{row2}\n{row3}")
+# ----------------------------------------rock paper scisor-------------------------------------------------------------
+#
+# rock = '''
+#     _______
+# ---'   ____)
+#       (_____)
+#       (_____)
+#       (____)
+# ---.__(___)
+# '''
+#
+# paper = '''
+#     _______
+# ---'   ____)____
+#           ______)
+#           _______)
+#          _______)
+# ---.__________)
+# '''
+#
+# scissors = '''
+#     _______
+# ---'   ____)____
+#           ______)
+#        __________)
+#       (____)
+# ---.__(___)
+# '''
+#
+# #Write your code below this line 👇
+# rock_paper_scissors=["rock", "paper", "scissors"]
+# computer_choice_int=random.randint(0,2)
+# game_images=[rock,paper,scissors]
+#
+# computer_pick= rock_paper_scissors[computer_choice_int]
+#
+#
+#
+# player_choice = input("What do you choose? Rock, Paper or Scissors.\n")
+# print(f'computer pick is {computer_pick}')
+# print(game_images[computer_choice_int])
+# print(f'Player pick is {player_choice}')
+#
+#
+# if player_choice == computer_pick:
+#     print("draw")
+# elif player_choice == "rock" and computer_pick == "scissors":
+#     print("player wins")
+# elif player_choice == "rock" and computer_pick == "paper":
+#     print("computer wins")
+# elif player_choice == "paper" and computer_pick == "scissors":
+#     print("computer wins")
+# elif player_choice == "paper" and computer_pick == "rock":
+#     print("player wins")
+# elif player_choice == "scissors" and computer_pick == "rock":
+#     print("computer wins")
+# elif player_choice == "scissors" and computer_pick == "paper":
+#     print("player wins")
+# else:
+#     print("incorrect answer You lose !!!")
+# ----------------------------------------------------------------------------------------------------------------------
