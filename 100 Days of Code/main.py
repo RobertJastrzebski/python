@@ -169,6 +169,8 @@ import random
 # owoce = ["jakłko","pomarancza","banan"]
 # owoce.append("truskawka")
 # owoce.extend(["sliwka","jablko"])
+# indeks=owoce.index("jablko")
+# print(indeks)
 # print(owoce)
 
 # ----------------exercise who will pay---------------------------------------------------------------------------------
@@ -439,3 +441,75 @@ import random
 #
 #
 #     print(stages[lives])
+# ------------------------------------------------functions with inputs-------------------------------------------------
+# # Review:
+# # Create a function called greet().
+# # Write 3 print statements inside the function.
+# # Call the greet() function and run your code.
+#
+#
+# def greet(name):
+#   for liczba in range(3):
+#     print(f"hello {name}")
+#
+# greet(name="Rob")
+# ----------------------------------------exercise -paint calculate number of cans--------------------------------------
+# import math
+# def paint_calc(height, width, cover):
+#     result = (test_h * test_w) / cover
+#     number_of_cans = math.ceil(result)
+#     print(f'You will need {number_of_cans} can of paint ')
+#
+#
+# # Write your code above this line 👆
+# # Define a function called paint_calc() so that the code below works.
+#
+# # 🚨 Don't change the code below 👇
+# test_h = int(input("Height of wall: "))
+# test_w = int(input("Width of wall: "))
+# coverage = 5
+# paint_calc(height=test_h, width=test_w, cover=coverage)
+# ---------------------------------------exercise prime numbers--------------------------------------------------------
+# # Write your code below this line 👇
+# def prime_checker(number):
+#     is_prime = True
+#     for num in range(2, number):
+#
+#         if number % num == 0:
+#             is_prime = False
+#     if is_prime:
+#         print("It is prime number")
+#     else:
+#         print("It is not a prime number")
+#
+#
+# # Write your code above this line 👆
+#
+# # Do NOT change any of the code below👇
+# n = int(input("Check this number: "))
+# prime_checker(number=n)
+
+# ----------------------------------------------Caesar Cipher----------------------------------------------------------
+# alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+#
+# direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+# text = input("Type your message:\n").lower()
+# shift = int(input("Type the shift number:\n"))
+# shift = shift % 26
+#
+# def cesar(plain_text,shift_amount,cipher_direction):
+#     end_text = ""
+#     if cipher_direction == "decode":
+#         shift_amount *= -1
+#     for letter in plain_text:
+#         if letter in alphabet:
+#             pozycja= alphabet.index(letter)
+#             shift_litera=alphabet[pozycja+shift_amount]
+#             end_text += shift_litera
+#         else:
+#             end_text+=letter
+#     print(f"The encoded text is {end_text}")
+# cesar(plain_text=text,shift_amount=shift,cipher_direction=direction)
+
+
+
