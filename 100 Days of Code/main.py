@@ -586,4 +586,40 @@ moje= {"lubie":1 ,"nie_lubie":2}
 # add_new_country("Russia", 2, ["Moscow", "Saint Petersburg"])
 # print(travel_log)
 
+# ----------------------------------functions with outputs  ----------------------------------------------------------
+#
+# def format_name(f_name,l_name):
+#   formated_f_name= f_name.title()
+#   formated_l_name=l_name.title()
+#   return(f'{formated_f_name}  {formated_l_name}')
+#
+# print(format_name("roBert","jasTrzebski"))
 
+# --------------------------------------calculator project-------------------------------------------------------------
+
+def add( liczba1, liczba2):
+    return liczba1+liczba2
+def substract(liczba1,liczba2):
+    return liczba1 - liczba2
+def multiply(liczba1,liczba2):
+    return liczba1 * liczba2
+def devide(liczba1,liczba2):
+    return liczba1 / liczba2
+
+operations = {
+    "+": add,
+    "-": substract,
+    "*": multiply,
+    "/": devide,
+}
+
+
+liczba_1 = int(input("Podaj pierwsza liczbe "))
+
+for operator in operations:
+    print(operator)
+operator_symbol= input("wybierz operator : ")
+liczba_2 = int(input("Podaj druga liczbe "))
+wybrany_operator = operations[operator_symbol]
+result = wybrany_operator(liczba_1,liczba_2)
+print(f"{liczba_1} {operator_symbol} {liczba_2} = {result}")
