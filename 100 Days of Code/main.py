@@ -596,30 +596,40 @@ moje= {"lubie":1 ,"nie_lubie":2}
 # print(format_name("roBert","jasTrzebski"))
 
 # --------------------------------------calculator project-------------------------------------------------------------
-
-def add( liczba1, liczba2):
-    return liczba1+liczba2
-def substract(liczba1,liczba2):
-    return liczba1 - liczba2
-def multiply(liczba1,liczba2):
-    return liczba1 * liczba2
-def devide(liczba1,liczba2):
-    return liczba1 / liczba2
-
-operations = {
-    "+": add,
-    "-": substract,
-    "*": multiply,
-    "/": devide,
-}
-
-
-liczba_1 = int(input("Podaj pierwsza liczbe "))
-
-for operator in operations:
-    print(operator)
-operator_symbol= input("wybierz operator : ")
-liczba_2 = int(input("Podaj druga liczbe "))
-wybrany_operator = operations[operator_symbol]
-result = wybrany_operator(liczba_1,liczba_2)
-print(f"{liczba_1} {operator_symbol} {liczba_2} = {result}")
+# def calculator():
+#     should_continue = True
+#     while should_continue:
+#         def add( liczba1, liczba2):
+#             return liczba1+liczba2
+#         def substract(liczba1,liczba2):
+#             return liczba1 - liczba2
+#         def multiply(liczba1,liczba2):
+#             return liczba1 * liczba2
+#         def devide(liczba1,liczba2):
+#             return liczba1 / liczba2
+#
+#         operations = {
+#             "+": add,
+#             "-": substract,
+#             "*": multiply,
+#             "/": devide,
+#         }
+#
+#
+#         liczba_1 = float(input("Podaj pierwsza liczbe "))
+#
+#         for operator in operations:
+#             print(operator)
+#
+#         operator_symbol= input("wybierz operator : ")
+#
+#         liczba_2 = float(input("Podaj druga liczbe "))
+#
+#         wybrany_operator = operations[operator_symbol]
+#         result = wybrany_operator(liczba_1,liczba_2)
+#         print(f"{liczba_1} {operator_symbol} {liczba_2} = {result}")
+#         player_response= input("Type 'y' to continue calculating or type 'n' to exit")
+#         if player_response == "n":
+#             should_continue = False
+#             calculator()
+# calculator()
