@@ -633,3 +633,73 @@ moje= {"lubie":1 ,"nie_lubie":2}
 #             should_continue = False
 #             calculator()
 # calculator()
+# --------------------------------------------blackjack --------------------------------------------------------------
+import random
+def deal_cards():
+    '''Zwraca karte z talii'''
+    cards=[11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card= random.choice(cards)
+    return card
+
+user_cards=[]
+computer_cards=[]
+game_over=False
+
+
+for _ in range(2):
+    user_cards.append(deal_cards())
+    computer_cards.append(deal_cards())
+
+def calculate_score(cards):
+    if sum(cards)==21  and len(cards)==2:
+        return 0
+    if 11 in cards and sum(cards)>21:
+        cards.remove(11)
+        cards.append(1)
+    score=0
+    for card in cards:
+        score+=card
+    return score
+
+def compare(user,computer):
+    if user==computer:
+        return "draw"
+    elif user == 0 :
+        return "You have a black jack"
+    elif computer == 0:
+        return "computer has blackjack"
+    elif user > 21:
+        return "you lose"
+    elif computer > 21:
+        return "computer lose"
+    elif user > computer:
+        return "You  win"
+    else:
+        return "you lose"
+
+
+while not game_over:
+
+    user_total_score=calculate_score(user_cards)
+    computer_total_score=calculate_score(computer_cards)
+    print(f'User cards: {user_cards}, Player score: {user_total_score}')
+    print(f'Computer first card is : {computer_cards[0]}')
+
+    if user_total_score == 0 or computer_total_score == 0 or user_total_score >21:
+        game_over=True
+
+    else:
+        response=input("another card ? type 'y' or type 'n' to pass : ")
+        if response == "y":
+            user_cards.append(deal_cards())
+        else:
+            game_over = True
+
+while computer_total_score !=0 and computer_total_score <17 :
+    computer_cards.append(deal_cards())
+    computer_total_score = calculate_score(computer_cards)
+print(f'computer cards{computer_cards} score: {computer_total_score}')
+print(compare(user_total_score, computer_total_score))
+
+
+
