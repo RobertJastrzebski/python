@@ -634,72 +634,114 @@ moje= {"lubie":1 ,"nie_lubie":2}
 #             calculator()
 # calculator()
 # --------------------------------------------blackjack --------------------------------------------------------------
+# import random
+# def deal_cards():
+#     '''Zwraca karte z talii'''
+#     cards=[11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+#     card= random.choice(cards)
+#     return card
+#
+# user_cards=[]
+# computer_cards=[]
+# game_over=False
+#
+#
+# for _ in range(2):
+#     user_cards.append(deal_cards())
+#     computer_cards.append(deal_cards())
+#
+# def calculate_score(cards):
+#     if sum(cards)==21  and len(cards)==2:
+#         return 0
+#     if 11 in cards and sum(cards)>21:
+#         cards.remove(11)
+#         cards.append(1)
+#     score=0
+#     for card in cards:
+#         score+=card
+#     return score
+#
+# def compare(user,computer):
+#     if user==computer:
+#         return "draw"
+#     elif user == 0 :
+#         return "You have a black jack"
+#     elif computer == 0:
+#         return "computer has blackjack"
+#     elif user > 21:
+#         return "you lose"
+#     elif computer > 21:
+#         return "computer lose"
+#     elif user > computer:
+#         return "You  win"
+#     else:
+#         return "you lose"
+#
+#
+# while not game_over:
+#
+#     user_total_score=calculate_score(user_cards)
+#     computer_total_score=calculate_score(computer_cards)
+#     print(f'User cards: {user_cards}, Player score: {user_total_score}')
+#     print(f'Computer first card is : {computer_cards[0]}')
+#
+#     if user_total_score == 0 or computer_total_score == 0 or user_total_score >21:
+#         game_over=True
+#
+#     else:
+#         response=input("another card ? type 'y' or type 'n' to pass : ")
+#         if response == "y":
+#             user_cards.append(deal_cards())
+#         else:
+#             game_over = True
+#
+# while computer_total_score !=0 and computer_total_score <17 :
+#     computer_cards.append(deal_cards())
+#     computer_total_score = calculate_score(computer_cards)
+# print(f'computer cards{computer_cards} score: {computer_total_score}')
+# print(compare(user_total_score, computer_total_score))
+
+# --------------------------------Zgadnij liczbe------------------------------------------------------------------------
 import random
-def deal_cards():
-    '''Zwraca karte z talii'''
-    cards=[11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-    card= random.choice(cards)
-    return card
-
-user_cards=[]
-computer_cards=[]
-game_over=False
+EASY=10
+HARD=5
 
 
-for _ in range(2):
-    user_cards.append(deal_cards())
-    computer_cards.append(deal_cards())
-
-def calculate_score(cards):
-    if sum(cards)==21  and len(cards)==2:
-        return 0
-    if 11 in cards and sum(cards)>21:
-        cards.remove(11)
-        cards.append(1)
-    score=0
-    for card in cards:
-        score+=card
-    return score
-
-def compare(user,computer):
-    if user==computer:
-        return "draw"
-    elif user == 0 :
-        return "You have a black jack"
-    elif computer == 0:
-        return "computer has blackjack"
-    elif user > 21:
-        return "you lose"
-    elif computer > 21:
-        return "computer lose"
-    elif user > computer:
-        return "You  win"
+def porownaj(sekretna_liczba, liczba_gracz,liczba_zyc):
+    if sekretna_liczba == liczba_gracz:
+        print(f"Zgadłeś brawo to jest liczba {sekretna_liczba}!!")
+    elif sekretna_liczba > liczba_gracz:
+        print("Twoja liczba jest zbyt niska")
+        return liczba_zyc - 1
     else:
-        return "you lose"
+        print("Twoja liczba jest zbyt wysoka")
+        return liczba_zyc - 1
 
-
-while not game_over:
-
-    user_total_score=calculate_score(user_cards)
-    computer_total_score=calculate_score(computer_cards)
-    print(f'User cards: {user_cards}, Player score: {user_total_score}')
-    print(f'Computer first card is : {computer_cards[0]}')
-
-    if user_total_score == 0 or computer_total_score == 0 or user_total_score >21:
-        game_over=True
-
+def ustal_poziom_trudnosci():
+    poziom_trudnosci = input("wybierz poziom trudnosci wpisz latwy lub trudny\n")
+    if poziom_trudnosci == "latwy":
+        return EASY
     else:
-        response=input("another card ? type 'y' or type 'n' to pass : ")
-        if response == "y":
-            user_cards.append(deal_cards())
-        else:
-            game_over = True
-
-while computer_total_score !=0 and computer_total_score <17 :
-    computer_cards.append(deal_cards())
-    computer_total_score = calculate_score(computer_cards)
-print(f'computer cards{computer_cards} score: {computer_total_score}')
-print(compare(user_total_score, computer_total_score))
+        return HARD
 
 
+def game():
+    print("Witaj w grze zgadnij moja liczbe :)\nMysle o liczbie pomiedzy 1-100")
+    secret_number=random.randrange(1,100)
+    # print(f"Podpowiedz liczba to {secret_number} ")
 
+    liczba_zyc = ustal_poziom_trudnosci()
+    liczba_gracza=0
+    while liczba_gracza != secret_number :
+        print(f"Masz obecnie {liczba_zyc} prób na trafienie")
+
+        liczba_gracza= int(input("zgadnij liczbe\n"))
+
+        liczba_zyc=porownaj(secret_number,liczba_gracza,liczba_zyc)
+
+        if liczba_zyc == 0:
+            print(f"Koniec gry nie masz juz zyc moja liczba to{secret_number}")
+            return
+        elif liczba_gracza !=secret_number:
+            print("zgadnij jeszcze raz")
+game()
