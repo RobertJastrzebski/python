@@ -702,46 +702,99 @@ moje= {"lubie":1 ,"nie_lubie":2}
 # print(compare(user_total_score, computer_total_score))
 
 # --------------------------------Zgadnij liczbe------------------------------------------------------------------------
+# import random
+# EASY=10
+# HARD=5
+#
+#
+# def porownaj(sekretna_liczba, liczba_gracz,zycia):
+#     if sekretna_liczba == liczba_gracz:
+#         print(f"Zgadłeś brawo to jest liczba {sekretna_liczba}!!")
+#     elif sekretna_liczba > liczba_gracz:
+#         print("Twoja liczba jest zbyt niska")
+#         return zycia - 1
+#     else:
+#         print("Twoja liczba jest zbyt wysoka")
+#         return zycia - 1
+#
+# def ustal_poziom_trudnosci():
+#
+#     poziom_trudnosci = input("wybierz poziom trudnosci wpisz latwy lub trudny\n")
+#     if poziom_trudnosci == "latwy":
+#         return EASY
+#     else:
+#         return HARD
+#
+#
+# def game():
+#     print("Witaj w grze zgadnij moja liczbe :)\nMysle o liczbie pomiedzy 1-100")
+#     secret_number=random.randrange(1,100)
+#     # print(f"Podpowiedz liczba to {secret_number} ")
+#
+#     liczba_zyc = ustal_poziom_trudnosci()
+#     liczba_gracza=0
+#     while liczba_gracza != secret_number :
+#         print(f"Masz obecnie {liczba_zyc} prób na trafienie")
+#
+#         liczba_gracza= int(input("zgadnij liczbe\n"))
+#
+#         liczba_zyc=porownaj(secret_number,liczba_gracza,liczba_zyc)
+#
+#         if liczba_zyc == 0:
+#             print(f"Koniec gry nie masz juz zyc moja liczba to {secret_number}")
+#             return
+#         elif liczba_gracza !=secret_number:
+#             print("zgadnij jeszcze raz")
+# game()
+# -------------------------------------------higher/lower game--------------------------------------------------------
+
 import random
-EASY=10
-HARD=5
+import art
+import game_data
 
+"""wybierz losowo postac """
+def losuj_postac():
+    ilosc = len(game_data.data)
+    losowa_liczba= random.randint(0,ilosc)
+    losowa_postac= game_data.data[losowa_liczba]
+    print(f"Compare A :{losowa_postac['name']},{losowa_postac['description']}, from {losowa_postac['country']} ")
+    print(f"({losowa_postac['name']},{losowa_postac['follower_count']})")
+    return losowa_postac
 
-def porownaj(sekretna_liczba, liczba_gracz,liczba_zyc):
-    if sekretna_liczba == liczba_gracz:
-        print(f"Zgadłeś brawo to jest liczba {sekretna_liczba}!!")
-    elif sekretna_liczba > liczba_gracz:
-        print("Twoja liczba jest zbyt niska")
-        return liczba_zyc - 1
+def porownaj_wynik(postac_pierwsza, postac_druga, wynik,odpowiedz_gracza):
+    wybor_gracza = ""
+    druga_postac_vs = ""
+    postac_A_followers= postac_pierwsza['follower_count']
+    postac_B_followers= postac_druga['follower_count']
+    print(f"postacA{postac_A_followers} postacB{postac_B_followers}")
+    odpowiedz_gracza_lower= odpowiedz_gracza.lower()
+    print(odpowiedz_gracza_lower)
+
+    if odpowiedz_gracza_lower == 'a':
+        wybor_gracza=postac_A_followers
+        druga_postac_vs=postac_B_followers
     else:
-        print("Twoja liczba jest zbyt wysoka")
-        return liczba_zyc - 1
-
-def ustal_poziom_trudnosci():
-    poziom_trudnosci = input("wybierz poziom trudnosci wpisz latwy lub trudny\n")
-    if poziom_trudnosci == "latwy":
-        return EASY
+        wybor_gracza=postac_B_followers
+        druga_postac_vs=postac_A_followers
+    if  wybor_gracza > druga_postac_vs:
+        print("Trafiłes")
+        return wynik+1
     else:
-        return HARD
+        return print("koniec gry przegrałes")
+
+
+
 
 
 def game():
-    print("Witaj w grze zgadnij moja liczbe :)\nMysle o liczbie pomiedzy 1-100")
-    secret_number=random.randrange(1,100)
-    # print(f"Podpowiedz liczba to {secret_number} ")
+    score=0
+    print(art.logo)
+    postac_A= losuj_postac()
 
-    liczba_zyc = ustal_poziom_trudnosci()
-    liczba_gracza=0
-    while liczba_gracza != secret_number :
-        print(f"Masz obecnie {liczba_zyc} prób na trafienie")
+    print(art.vs)
+    postac_B = losuj_postac()
 
-        liczba_gracza= int(input("zgadnij liczbe\n"))
+    odpowiedz= input("Who has more followers type 'a' or 'b' ")
+    porownaj_wynik(postac_A,postac_B,score,odpowiedz)
 
-        liczba_zyc=porownaj(secret_number,liczba_gracza,liczba_zyc)
-
-        if liczba_zyc == 0:
-            print(f"Koniec gry nie masz juz zyc moja liczba to{secret_number}")
-            return
-        elif liczba_gracza !=secret_number:
-            print("zgadnij jeszcze raz")
 game()
