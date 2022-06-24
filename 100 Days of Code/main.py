@@ -749,52 +749,58 @@ moje= {"lubie":1 ,"nie_lubie":2}
 # -------------------------------------------higher/lower game--------------------------------------------------------
 
 import random
-import art
-import game_data
+from art import logo , vs
+from  game_data import data
+import os
 
-"""wybierz losowo postac """
-def losuj_postac():
-    ilosc = len(game_data.data)
-    losowa_liczba= random.randint(0,ilosc)
-    losowa_postac= game_data.data[losowa_liczba]
-    print(f"Compare A :{losowa_postac['name']},{losowa_postac['description']}, from {losowa_postac['country']} ")
-    print(f"({losowa_postac['name']},{losowa_postac['follower_count']})")
-    return losowa_postac
+def formatuj_dane(postac):
+    imie_postaci= postac["name"]
+    description = postac["description"]
+    country = postac["country"]
+    followers= postac['follower_count']
+    return (f" {imie_postaci}, a {description} from {country} {followers}")
 
-def porownaj_wynik(postac_pierwsza, postac_druga, wynik,odpowiedz_gracza):
-    wybor_gracza = ""
-    druga_postac_vs = ""
-    postac_A_followers= postac_pierwsza['follower_count']
-    postac_B_followers= postac_druga['follower_count']
-    print(f"postacA{postac_A_followers} postacB{postac_B_followers}")
-    odpowiedz_gracza_lower= odpowiedz_gracza.lower()
-    print(odpowiedz_gracza_lower)
-
-    if odpowiedz_gracza_lower == 'a':
-        wybor_gracza=postac_A_followers
-        druga_postac_vs=postac_B_followers
+def sprawdz_odpowiedz(guess,postac_A,postac_B):
+    """uzywa if aby sprawdzic czy grac odpowiedział prawidłowo i zwraca true albo false"""
+    if postac_A>postac_B:
+        return guess == "a"
     else:
-        wybor_gracza=postac_B_followers
-        druga_postac_vs=postac_A_followers
-    if  wybor_gracza > druga_postac_vs:
-        print("Trafiłes")
-        return wynik+1
+        return guess == "b"
+
+
+
+print(logo)
+score=0
+kontynuowac_gre = True
+losowa_postacB = random.choice(data)
+
+while kontynuowac_gre:
+    losowa_postacA = losowa_postacB
+    losowa_postacB = random.choice(data)
+
+    while losowa_postacA == losowa_postacB:
+        losowa_postacB = random.choice((data))
+
+    print(f"Compare A {formatuj_dane(losowa_postacA)}")
+    print(vs)
+    print(f"Againts B {formatuj_dane(losowa_postacB)}")
+
+    #zapytaj gracza kto ma wiecej followersów
+    guess = input("Who has more followers 'A' or 'B' ? : ").lower()
+
+
+    #sprawdz followersów dla kazdej postaci
+    postac_A_followers= losowa_postacA['follower_count']
+    postac_B_followers= losowa_postacB['follower_count']
+
+    #sprawdz czy gracz odpowiedzial dobrze
+    odpowiedz_dobra= sprawdz_odpowiedz(guess,postac_A_followers,postac_B_followers)
+    #daj odpowiedz graczowi czy odpowiedział dobrze
+
+    if odpowiedz_dobra:
+        score +=1
+        losowa_postacA = guess
+        print(f"Masz racje zgadłes obecnie masz {score} punktów")
     else:
-        return print("koniec gry przegrałes")
-
-
-
-
-
-def game():
-    score=0
-    print(art.logo)
-    postac_A= losuj_postac()
-
-    print(art.vs)
-    postac_B = losuj_postac()
-
-    odpowiedz= input("Who has more followers type 'a' or 'b' ")
-    porownaj_wynik(postac_A,postac_B,score,odpowiedz)
-
-game()
+        print(f"NIestety nie zgadłeś finalny wynik to {score} punktów")
+        kontynuowac_gre =False
