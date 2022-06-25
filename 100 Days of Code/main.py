@@ -747,60 +747,59 @@ moje= {"lubie":1 ,"nie_lubie":2}
 #             print("zgadnij jeszcze raz")
 # game()
 # -------------------------------------------higher/lower game--------------------------------------------------------
-
-import random
-from art import logo , vs
-from  game_data import data
-import os
-
-def formatuj_dane(postac):
-    imie_postaci= postac["name"]
-    description = postac["description"]
-    country = postac["country"]
-    followers= postac['follower_count']
-    return (f" {imie_postaci}, a {description} from {country} {followers}")
-
-def sprawdz_odpowiedz(guess,postac_A,postac_B):
-    """uzywa if aby sprawdzic czy grac odpowiedział prawidłowo i zwraca true albo false"""
-    if postac_A>postac_B:
-        return guess == "a"
-    else:
-        return guess == "b"
-
-
-
-print(logo)
-score=0
-kontynuowac_gre = True
-losowa_postacB = random.choice(data)
-
-while kontynuowac_gre:
-    losowa_postacA = losowa_postacB
-    losowa_postacB = random.choice(data)
-
-    while losowa_postacA == losowa_postacB:
-        losowa_postacB = random.choice((data))
-
-    print(f"Compare A {formatuj_dane(losowa_postacA)}")
-    print(vs)
-    print(f"Againts B {formatuj_dane(losowa_postacB)}")
-
-    #zapytaj gracza kto ma wiecej followersów
-    guess = input("Who has more followers 'A' or 'B' ? : ").lower()
-
-
-    #sprawdz followersów dla kazdej postaci
-    postac_A_followers= losowa_postacA['follower_count']
-    postac_B_followers= losowa_postacB['follower_count']
-
-    #sprawdz czy gracz odpowiedzial dobrze
-    odpowiedz_dobra= sprawdz_odpowiedz(guess,postac_A_followers,postac_B_followers)
-    #daj odpowiedz graczowi czy odpowiedział dobrze
-
-    if odpowiedz_dobra:
-        score +=1
-        losowa_postacA = guess
-        print(f"Masz racje zgadłes obecnie masz {score} punktów")
-    else:
-        print(f"NIestety nie zgadłeś finalny wynik to {score} punktów")
-        kontynuowac_gre =False
+#
+# import random
+# from art import logo , vs
+# from  game_data import data
+# import os
+#
+# def formatuj_dane(postac):
+#     imie_postaci= postac["name"]
+#     description = postac["description"]
+#     country = postac["country"]
+#     followers= postac['follower_count']
+#     return (f" {imie_postaci}, a {description} from {country} {followers}")
+#
+# def sprawdz_odpowiedz(guess,postac_A,postac_B):
+#     """uzywa if aby sprawdzic czy grac odpowiedział prawidłowo i zwraca true albo false"""
+#     if postac_A>postac_B:
+#         return guess == "a"
+#     else:
+#         return guess == "b"
+#
+#
+#
+# print(logo)
+# score=0
+# kontynuowac_gre = True
+# losowa_postacB = random.choice(data)
+#
+# while kontynuowac_gre:
+#     losowa_postacA = losowa_postacB
+#     losowa_postacB = random.choice(data)
+#
+#     while losowa_postacA == losowa_postacB:
+#         losowa_postacB = random.choice((data))
+#
+#     print(f"Compare A {formatuj_dane(losowa_postacA)}")
+#     print(vs)
+#     print(f"Againts B {formatuj_dane(losowa_postacB)}")
+#
+#     #zapytaj gracza kto ma wiecej followersów
+#     guess = input("Who has more followers 'A' or 'B' ? : ").lower()
+#
+#
+#     #sprawdz followersów dla kazdej postaci
+#     postac_A_followers= losowa_postacA['follower_count']
+#     postac_B_followers= losowa_postacB['follower_count']
+#
+#     #sprawdz czy gracz odpowiedzial dobrze
+#     odpowiedz_dobra= sprawdz_odpowiedz(guess,postac_A_followers,postac_B_followers)
+#     #daj odpowiedz graczowi czy odpowiedział dobrze
+#
+#     if odpowiedz_dobra:
+#         score +=1
+#         print(f"Masz racje zgadłes obecnie masz {score} punktów")
+#     else:
+#         print(f"NIestety nie zgadłeś finalny wynik to {score} punktów")
+#         kontynuowac_gre =False
