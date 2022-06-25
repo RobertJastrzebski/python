@@ -534,10 +534,10 @@ moje= {"lubie":1 ,"nie_lubie":2}
 # }
 # # 🚨 Don't change the code above 👆
 #
-# # TODO-1: Create an empty dictionary called student_grades.
+# #  Create an empty dictionary called student_grades.
 # student_grades = {}
 #
-# # TODO-2: Write your code below to add the grades to student_grades.👇
+# # : Write your code below to add the grades to student_grades.👇
 # for student in student_scores:
 #     score = student_scores[student]
 #     if score > 90:
@@ -568,7 +568,7 @@ moje= {"lubie":1 ,"nie_lubie":2}
 # ]
 # #🚨 Do NOT change the code above
 #
-# #TODO: Write the function that will allow new countries
+#  Write the function that will allow new countries
 # #to be added to the travel_log. 👇
 # def add_new_country(country_name,visits_number,cities_visited):
 #
@@ -803,3 +803,60 @@ moje= {"lubie":1 ,"nie_lubie":2}
 #     else:
 #         print(f"NIestety nie zgadłeś finalny wynik to {score} punktów")
 #         kontynuowac_gre =False
+
+# -----------------------------------------------Coffe machine project-------------------------------------------------
+
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+
+#TODO: 1  Wydrukuj raport dostepnych zasobów po wspisaniu "report"
+
+#TODO: 2 Prompt user by asking “ What would you like? (espresso/latte/cappuccino):
+
+#TODO: 3 Turn off the Coffee Machine by entering “ off ” to the prompt.
+
+#TODO: 4 Check resources sufficient? a. When the user chooses a drink, the program should check if there are enough resources to make that drink.
+# b. E.g. if Latte requires 200ml water but there is only 100ml left in the machine. It should
+# not continue to make the drink but print: “ Sorry there is not enough water. ”
+# c. The same should happen if another resource is depleted, e.g. milk or coffee.
+
+#TODO: 5 Process coins.
+# a. If there are sufficient resources to make the drink selected, then the program should
+# prompt the user to insert coins.
+# b. Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
+# c. Calculate the monetary value of the coins inserted. E.g. 1 quarter, 2 dimes, 1 nickel, 2
+# pennies = 0.25 + 0.1 x 2 + 0.05 + 0.01 x 2 = $0.52
+
+#TODO: 6 Check transaction successful?
+
+#TODO: 7 Make Coffee.
