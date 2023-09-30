@@ -7,3 +7,6 @@ window = Tk()
 window.title("Fiszki")
 window.config(padx=50,pady=50,bg=BACKGROUND_COLOR)
 
+canvas= Canvas()
+
+window.mainloop()
