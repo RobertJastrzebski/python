@@ -11,4 +11,4 @@ with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
     connection.sendmail(
         from_addr=my_email,
         to_addrs=reciver_email,
-        msg="Subject:Witam serdecznie \n\n Nowa wiadowmosc tekstowa ")
+        msg="Subject:Witam serdecznie \n\n Nowa wiadowmosc tekstowa 1 ")
