@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/day32_smtp_mail.iml" filepath="$PROJECT_DIR$/.idea/day32_smtp_mail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/day_32_smtp_mail.iml" filepath="$PROJECT_DIR$/.idea/day_32_smtp_mail.iml" />
     </modules>
   </component>
 </project>
