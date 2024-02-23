@@ -30,11 +30,14 @@ response = requests.post(url=graph_enpoint, json=graph_param, headers=headers)
 # print(response.text)
 
 pixel_enpoint = f"{pixela_enpoint}/{USERNAME}/graphs/{GRAPH_ID}"
-today = datetime(year=2024, month=2, day=20)
+today = datetime.now()
 
-# pixel_param = {"date": today.strftime("%Y%m%d"), "quantity": "88.9"}
-# pixel_response = requests.post(url=pixel_enpoint, json=pixel_param, headers=headers)
-# print(pixel_response.text)
+pixel_param = {
+    "date": today.strftime("%Y%m%d"),
+    "quantity": input("How many kilometers did you cycle today?"),
+}
+pixel_response = requests.post(url=pixel_enpoint, json=pixel_param, headers=headers)
+print(pixel_response.text)
 
 
 # update_enpoint = f"{pixela_enpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
@@ -43,9 +46,9 @@ today = datetime(year=2024, month=2, day=20)
 # update_request = requests.put(url=update_enpoint, json=new_pixel_param, headers=headers)
 # print(update_request.text)
 
-delete_enpoint = (
-    f"{pixela_enpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
-)
+# delete_enpoint = (
+#     f"{pixela_enpoint}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+# )
 
-delete_response = requests.delete(url=delete_enpoint, headers=headers)
-print(delete_response.text)
+# delete_response = requests.delete(url=delete_enpoint, headers=headers)
+# print(delete_response.text)
